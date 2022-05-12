@@ -1,0 +1,31 @@
+.MapButtons {
+    position: absolute;
+    left: 29px;
+    top: 52px;
+    z-index: 10;
+}
+
+.MapButtons .map-button {
+    cursor: pointer;
+    user-select: none;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(39.02deg, #F9F8F6 -49.18%, #FFFFFF 90.12%);
+    border-radius: 6px;
+    box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
+}
+
+.MapButtons .map-button svg {
+    position: absolute;
+}
+
+.MapButtons .slide-right{
+    transform : translate(254px, 0);
+}

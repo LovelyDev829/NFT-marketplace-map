@@ -1,0 +1,119 @@
+.LeftBar{
+    position: absolute;
+    left: -254px;
+    top: 0px;
+    width: 228px;
+    height: calc( 100vh - 98px );
+    background: linear-gradient(359.82deg, rgba(255, 255, 255, 0.8) 16.55%, rgba(255, 253, 249, 0.8) 125.86%);
+    /* background-color: rgb(0, 255, 13); */
+    z-index: 9;
+    animation-duration: 0.4s;
+    transition-duration: 0.4s;
+    padding-left: 26px;
+    padding-top: 30px;
+}
+
+.slide-right{
+    transform : translate(254px, 0);
+}
+
+.LeftBar p{
+    margin: 0px;
+}
+
+.LeftBar p:first-child{
+    color: #4E4D4D;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.LeftBar .filter{
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.LeftBar .filter p{
+    margin-left: 6px;
+    color: #EEBC4E;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.LeftBar .buttons{
+    padding-left: 9px;
+    padding-top: 7px;
+    display: flex;
+    align-items: center;
+}
+
+.LeftBar .buttons .button{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #EEBC4E;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.LeftBar .buttons .button p{
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+    margin-right: 3px;
+}
+
+.LeftBar .selection-bar{
+    margin-top: 46px;
+}
+
+.LeftBar .selection-bar P{
+    color: #4E4D4D;
+}
+
+.LeftBar .selection-bar p:first-child{
+    font-size: 17px;
+    font-weight: 500;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.LeftBar .selection-bar .selects{
+    padding-left: 14px;
+    padding-top: 4px;
+}
+.LeftBar .selection-bar .selects .select{
+    display: flex;
+    align-items: center;
+}
+.LeftBar .selection-bar .selects .select .circle-out{
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    border-width: 1px;
+    border-color: #4E4D4D;
+    border-style: solid;
+    position: relative;
+    cursor: pointer;
+}
+
+.LeftBar .selection-bar .selects .select .circle-in{
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background-color: #EEBC4E;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+}
+
+.LeftBar .selection-bar .selects .select p{
+    font-size: 17px;
+    font-weight: 400;
+    margin-left: 9px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}

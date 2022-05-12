@@ -1,0 +1,92 @@
+.RightBar{
+    padding-top: 38px;
+    padding-left: 22px;
+    padding-right: 28px;
+    position: absolute;
+    right: -305px;
+    top: 0px;
+    width: 255px;
+    height: 100vh;
+    z-index: 9;
+    background: linear-gradient(359.82deg, rgba(255, 255, 255, 0.8) 16.55%, rgba(255, 253, 249, 0.8) 125.86%);
+    animation-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+.slide-left{
+    transform : translate(-305px, 0);
+}
+
+.RightBar p{
+    color: #585858;
+    margin: 0px;
+}
+
+.RightBar .title{
+    font-size: 21px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.RightBar .title svg{
+    cursor: pointer;
+}
+.RightBar .item{
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+.RightBar .item .first{
+    font-size: 17px;
+    font-weight: 500;
+    margin-left: 13px;
+}
+.RightBar .item .second{
+    font-size: 17px;
+    font-weight: 400;
+    margin-left: 13px;
+}
+.RightBar .ether-calc{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 2px;
+}
+.RightBar .ether-calc .price{
+    margin-left: 9px;
+}
+.RightBar .ether-calc .price p:first-child{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 22px;
+}
+.RightBar .ether-calc .price p:last-child{
+    font-size: 8px;
+    line-height: 10px;
+}
+.RightBar .buy-button{
+    cursor: pointer;
+    margin: auto;
+    margin-top: 51px;
+    background-color: #EEBC4E;
+    border-radius: 4px;
+    padding: 39px;
+    padding-top: 8px;
+    padding-bottom: 9px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+.RightBar .buy-button:hover{
+    background-color: #fdd888;
+}
+.RightBar .buy-button p{
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 7px;
+    color: white;
+}

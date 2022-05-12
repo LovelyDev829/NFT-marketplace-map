@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <style>
+      rect.st1.active
+      {
+        fill:rgb(0, 17, 255) !important;
+      }
+      rect.st1.bought
+      {
+        fill:red !important;
+      }
+      rect.st1
+      {
+        fill:rgba(13, 240, 164, 0.13) !important;
+      }
+      rect:hover
+      {
+        fill:rgb(255, 196, 0) !important;
+      }
+      .tempModal{
+          z-index: 7;
+          position: absolute;
+          top: 100px;
+          left: 200px;
+          background-color: #FFFFFF;
+          border-color: #d6d6d6;
+          border-style: solid;
+          border-width: 1px;
+          border-radius: 6px;
+          /* border-bottom-right-radius: 0px; */
+          padding: 9px;
+          display: flex;
+      }
+      .tempModal .svg-outter-circle{
+          width: 22px;
+          height: 22px;
+          background-color: #F9F8F6;
+          border-radius: 35px;
+          justify-content: center;
+          align-items: center;
+          padding: 7px;
+      }
+      .tempModal .text{
+          padding-left: 7px;
+      }
+      .tempModal .text p{
+          margin: 0px;
+      }
+      .tempModal .text p:nth-child(1){
+          font-size: 17px;
+          font-weight: 600;
+      }
+      .tempModal .text p:nth-child(2){
+          font-size: 12px;
+          font-weight: 400;
+      }
+      .tempModal .text p:nth-child(3){
+          margin-top: 7px;
+          font-size: 12px;
+          font-weight: 400;
+      }
+    </style>
+    <script>
+    $(document).ready(function()
+    {
+      var myVar_turnToRed = false;
+      var myVar_viewSelection = 0;
+      var myVar_rightBarFlag = false;
+      Object.defineProperty(window, 'turnToRed', {
+        get: function () { return myVar_turnToRed; },
+        set: function (v) {
+          myVar_turnToRed = v;
+          if(window.turnToRed && window.rightBarFlag){
+            const prevElement = document.getElementById(localStorage.prevId)?.getElementsByTagName("rect")[0]
+            prevElement?.classList.remove('active');
+            prevElement?.classList.add('bought');
+          }
+        }
+      });
+      Object.defineProperty(window, 'viewSelection', {
+        get: function () { return myVar_viewSelection; },
+        set: function (v) {
+          myVar_viewSelection = v;
+          reloadFunc()
+        }
+      });
+      function reloadFunc() {
+        if(window.viewSelection === 1){
+          const prevElement = document.getElementById(localStorage.prevId)?.getElementsByTagName("rect")[0]
+          prevElement?.classList.remove('active');
+          prevElement?.classList.remove('bought');
+          window.myLandIds?.map((landItem)=>{
+            const landElement = document.getElementById(landItem)?.getElementsByTagName("rect")[0]
+            landElement?.classList.add('bought');
+          })
+        }
+        if(window.viewSelection !== 1){
+          window.myLandIds?.map((landItem)=>{
+            const landElement = document.getElementById(landItem)?.getElementsByTagName("rect")[0]
+            landElement?.classList.remove('bought');
+          })
+        }
+      }
+      Object.defineProperty(window, 'rightBarFlag', {
+        get: function () { return myVar_rightBarFlag; },
+        set: function (v) {
+          myVar_rightBarFlag = v;
+          if(!window.rightBarFlag){
+            const prevElement = document.getElementById(localStorage.prevId)?.getElementsByTagName("rect")[0]
+            prevElement?.classList.remove('active');
+            prevElement?.classList.remove('bought');
+          }
+        }
+      });
+      $.ajax({url:"/tempSvg.svg?",dataType: 'html',success:function(data)
+      {
+        $("#svgContainer").append(data);
+          $("svg g rect").each(function()
+          {
+            var innnerHtmlElement = document.createElement("div");
+            $(this).on("mouseover",function(event){
+              const nowId = $(this).parent().attr('id')
+              // console.log("hover id now: ", nowId)
+              const mapElement = document.getElementById('map')
+              var statusWord = 'AVAILABLE'
+              if($(this).hasClass('active')) statusWord = 'SELECTED'
+              else if(window.myLandIds?.includes(nowId)) statusWord = 'BOUGHT'
+              innnerHtmlElement.innerHTML = ``
+                +`<div class='tempModal' style="top: ${$(this).position().top-190}px; left: ${$(this).position().left-198}px">`
+                    +`<div class='svg-outter-circle'>`
+                        +`<svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">`
+                            +`<path d="M18.3333 5.6394C18.3609 5.62335 18.3837 5.60036 18.3996 5.57273C18.4154 5.54511 18.4238 5.5138 18.4238 5.48195C18.4238 5.45009 18.4154 5.41878 18.3996 5.39116C18.3837 5.36353 18.3609 5.34055 18.3333 5.32449L11.3725 1.28035C10.9271 1.02219 10.4215 0.88623 9.90668 0.88623C9.39188 0.88623 8.88621 1.02219 8.44082 1.28035L1.48138 5.32449C1.45387 5.34055 1.43104 5.36353 1.41517 5.39116C1.3993 5.41878 1.39095 5.45009 1.39095 5.48195C1.39095 5.5138 1.3993 5.54511 1.41517 5.57273C1.43104 5.60036 1.45387 5.62335 1.48138 5.6394L9.81576 10.5421C9.84379 10.5586 9.87574 10.5674 9.90827 10.5674C9.94081 10.5674 9.97275 10.5586 10.0008 10.5421L18.3333 5.6394ZM0.701176 6.87944C0.673377 6.86339 0.641833 6.85496 0.609734 6.85501C0.577634 6.85507 0.546117 6.86359 0.518371 6.87973C0.490624 6.89587 0.46763 6.91905 0.451716 6.94693C0.435801 6.9748 0.42753 7.00639 0.427738 7.03849V14.9632C0.428426 15.3451 0.529078 15.7201 0.719684 16.051C0.91029 16.382 1.18421 16.6572 1.5142 16.8494L8.9043 21.2805C8.932 21.2965 8.96342 21.3049 8.9954 21.3049C9.02738 21.3049 9.05881 21.2965 9.08651 21.2805C9.11422 21.2646 9.13723 21.2416 9.15325 21.2139C9.16926 21.1862 9.17771 21.1548 9.17774 21.1228V11.9285C9.17771 11.8965 9.16927 11.8651 9.15327 11.8374C9.13727 11.8097 9.11428 11.7868 9.08659 11.7708L0.701176 6.87944ZM10.6361 11.9604V21.1205C10.6361 21.1525 10.6446 21.1839 10.6606 21.2116C10.6766 21.2393 10.6996 21.2623 10.7273 21.2783C10.755 21.2942 10.7864 21.3026 10.8184 21.3026C10.8504 21.3026 10.8818 21.2942 10.9095 21.2782L18.2992 16.8471C18.6289 16.6552 18.9027 16.3803 19.0934 16.0498C19.284 15.7193 19.3849 15.3447 19.3861 14.9632V7.03849C19.386 7.00654 19.3775 6.97519 19.3614 6.94757C19.3454 6.91995 19.3223 6.89702 19.2946 6.8811C19.267 6.86518 19.2356 6.85681 19.2036 6.85684C19.1717 6.85687 19.1403 6.86529 19.1126 6.88126L10.7272 11.8031C10.6996 11.8191 10.6766 11.842 10.6607 11.8696C10.6447 11.8972 10.6362 11.9285 10.6361 11.9604Z" fill="#EEBC4E"/>`
+                        +`</svg>`
+                    +`</div>`
+                    +`<div class='text'>`
+                        +`<p>LAND ID ${nowId.substring(11,17)}</p>`
+                        +`<p>SIZE 6 X 6</p>`
+                        +`<p>STATUS: ${statusWord}</p>`
+                    +`</div>`
+                +`</div>`
+              mapElement?.appendChild(innnerHtmlElement);
+            })
+            $(this).on("mouseleave",function(event){
+              innnerHtmlElement.remove()
+            })
+            $(this).on("mousedown",function(event)
+            {
+              const prevElement = document.getElementById(localStorage.prevId)?.getElementsByTagName("rect")[0]
+              prevElement?.classList.remove('active');
+              if(window.viewSelection !== 1) prevElement?.classList.remove('bought');
+              $(this).toggleClass("active");
+              const nowId = $(this).parent().attr('id')
+              // console.log("id now: ", nowId)
+              localStorage.prevId = nowId
+              window.currentId = nowId
+              // console.log("position: ", $(this).position())
+              // console.log("localStorage.tempSelectedID", localStorage.tempSelectedID)
+            });
+          }); 
+      }});
+    });
+    </script>
+  </body>
+</html>

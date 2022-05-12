@@ -1,0 +1,165 @@
+.hidden{
+    display: none !important;
+}
+
+.go-back{
+    opacity: 0.3;
+    animation-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+.FirstPage {
+    min-width: 1047px;
+}
+
+.FirstPage p {
+    user-select: none;
+}
+
+.Body {
+    /* background-color: #cca121; */
+    position: relative;
+}
+
+.map {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* height: 100vh; */
+}
+
+.map .smooth-zoom {
+    /* margin-top: 28px; */
+    animation-duration: 0.7s;
+    transition-duration: 0.7s;
+}
+
+.relative {
+    position: relative;
+}
+
+.map .pointing-notes{
+    position: relative;
+    left: 290px;
+    z-index: 6;
+    animation-duration: 0.5s !important;
+    transition-duration: 0.5s !important;
+}
+.map .point-text {
+    position: absolute;
+    width: max-content;
+}
+
+.map .point-text p:nth-child(1) {
+    margin: 0px;
+    /* font-family: 'Rajdhani'; */
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 27px;
+}
+
+.map .point-text p:nth-child(2) {
+    margin: 0px;
+    /* font-family: 'Rajdhani'; */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 19px;
+    /* color: #1CC298; */
+}
+
+.map .point-tr svg:nth-child(1) {
+    position: absolute;
+    top: 212px;
+    right: 73px;
+}
+
+.map .point-tr svg:nth-child(2) {
+    position: absolute;
+    top: 215px;
+    right: -19px;
+}
+
+.map .point-tr .point-text {
+    text-align: left;
+    top: 199px;
+    right: -213px;
+}
+
+.map .point-tr .point-text p:nth-child(1) {
+    color: #1CC298;
+}
+
+.map .point-tl svg:nth-child(1) {
+    position: absolute;
+    top: 212px;
+    right: 465px;
+}
+
+.map .point-tl svg:nth-child(2) {
+    position: absolute;
+    top: 158px;
+    right: 468px;
+}
+
+.map .point-tl .point-text {
+    text-align: right;
+    top: 102px;
+    right: 454px;
+}
+
+.map .point-tl .point-text p {
+    color: #807C76;
+}
+
+.map .point-bl svg:nth-child(1) {
+    position: absolute;
+    top: 485px;
+    right: 453px;
+}
+
+.map .point-bl svg:nth-child(2) {
+    position: absolute;
+    top: 488px;
+    right: 457px;
+}
+
+.map .point-bl .point-text {
+    text-align: right;
+    top: 471px;
+    right: 582px;
+}
+
+.map .point-bl .point-text p {
+    color: #807C76;
+}
+
+.map .point-br svg:nth-child(1) {
+    position: absolute;
+    top: 428px;
+    right: 242px;
+}
+
+.map .point-br svg:nth-child(2) {
+    position: absolute;
+    top: 435px;
+    right: 245px;
+}
+
+.map .point-br svg:nth-child(3) {
+    position: absolute;
+    top: 513px;
+    right: 100px;
+}
+
+.map .point-br .point-text {
+    text-align: left;
+    top: 494px;
+    right: -125px;
+}
+
+.map .point-br .point-text p {
+    color: #807C76;
+}
