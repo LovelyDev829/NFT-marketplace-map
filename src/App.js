@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import './App.css';
 import FirstPage from './pages/FirstPage';
 import { setMovement, setCurrentId } from './actions/index';
@@ -20,7 +20,7 @@ function App() {
     }}
     onMouseUp={()=>{
       downFlag = false
-      const currentId = window.currentId
+      // const currentId = window.currentId
       // console.log("currentId--------------", currentId)
       setCurrentID(window.currentId)
     }}

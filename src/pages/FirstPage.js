@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import './FirstPage.css'
 import Header from '../components/Header'
 import MapButtons from '../components/MapButtons'
@@ -44,7 +44,7 @@ function FirstPage() {
                         <div className={zoom>=3 ? (smoothZoomFlag? 'smooth-zoom': '') : 'hidden'} id='svgContainer'
                             onClick={rightBarOpeN}
                             style={{ width: mapWidth, position: 'absolute', top: mapPosTop, left: mapPosLeft, zIndex:5 }}></div>
-                        <img className={zoom>=3 ? 'hidden' : (smoothZoomFlag? 'smooth-zoom': '')} src={FirstMap}
+                        <img className={zoom>=3 ? 'hidden' : (smoothZoomFlag? 'smooth-zoom': '')} src={FirstMap} alt="AltImg"
                             style={{ width: mapWidth, position: 'absolute', top: mapPosTop, left: mapPosLeft, zIndex:4, pointerEvents: 'none'}}/>
                         <div className='pointing-notes'>
                             <div className={maxZoomOutFlag ? 'point-tr' : 'hidden'}>

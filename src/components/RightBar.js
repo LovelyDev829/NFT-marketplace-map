@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import './RightBar.css'
 import { rightBarClose, addToMyLand } from '../actions/index';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 function RightBar() {
     const rightBarFlag = useSelector(state => state.rightBarFlag)
     const currentId = useSelector(state => state.currentId)
-    const myLandIdS = useSelector(state => state.myLandIds)
+    // const myLandIdS = useSelector(state => state.myLandIds)
     const dispatch = useDispatch()
     const rightBarClosE = () => {
         dispatch(rightBarClose());

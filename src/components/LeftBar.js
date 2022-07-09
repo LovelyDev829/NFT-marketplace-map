@@ -1,6 +1,6 @@
 import React from 'react'
 import './LeftBar.css'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function LeftBar() {
     const leftBarFlag = useSelector(state => state.leftBarFlag)

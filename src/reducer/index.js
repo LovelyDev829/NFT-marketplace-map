@@ -94,7 +94,7 @@ const reducer = (state = initState, action) => {
         case 'ADD_TO_MY_LAND': {
             // console.log("ADD_TO_MY_LAND")
             var tempMyLandIds = state.myLandIds
-            tempMyLandIds.map((item)=>{
+            tempMyLandIds.forEach((item)=>{
                 // console.log(item)
                 if(item === state.currentId) return{...state}
             })
