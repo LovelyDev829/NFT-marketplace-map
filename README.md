@@ -1,7 +1,8 @@
 # Developer
-Name :    Dmitriy
 Email:    lovelydeveloper829@gmail.com
-Whatsapp: +79109526206 
+Whatsapp: +12762601724 
+# Live link
+https://david-nft-marketplace.netlify.app/
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
